@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
-            primaruyKey: true
+            primaryKey: true
         },
         name: {
             type: DataTypes.STRING,
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unipue: true,
+            unique: true,
             validate: {
                 isEmail: true
             }
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 
     User.beforeSave(async (user, options) => {
         if (user.changed("password")) {
-            user.password = await bcrypt.hash(user, password= 10)
+            user.password = await bcrypt.hash(user, password = 10)
         }
     })
 

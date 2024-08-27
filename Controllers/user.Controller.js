@@ -1,13 +1,13 @@
-const { User } = require("../models/user.model")
-const { validetionUser } = require("../validations/user.validetion")
+const { User } = require("../models")
+const { validateUser } = require("../validations/user.validetion")
 
 exports.createUser = async (req, res) => {
-    const { error } = validetionUser(req.body)
+    const { error } = validateUser(req.body)
     if (error) return res.status(400).send(error.details[0].message)
 
     try {
-        const user = await User.create(rea.body)
-        res.status(201).send(user)
+        const users = await User.create(req.body)
+        res.status(201).send(users)
     } catch (err) {
         res.status(500).send(err.message)
     }
@@ -24,9 +24,9 @@ exports.getUser = async (req, res) => {
 
 exports.getUserBiId = async (req, res) => {
     try {
-        const user = await User.findByPk(req.params.id)
-        if (!user) return res.status(404).send("User not faund")
-        res.status(200).send(user)
+        const users = await User.findByPk(req.params.id)
+        if (!users) return res.status(404).send("User not faund")
+        res.status(200).send(users)
     } catch (err) {
         res.status(500).send(err.message)
     }

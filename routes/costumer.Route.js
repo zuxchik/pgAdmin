@@ -1,11 +1,11 @@
 const express = require('express');
-const costomer = express.Router();
+const customerRouts = express.Router();
 const costomerController = require("../Controllers/Customer.Controller")
 
 /**
  * @swagger
  * tags:
- *   name: costomers
+ *   name: Customer
  *   description: costomer management
  */
 
@@ -13,8 +13,8 @@ const costomerController = require("../Controllers/Customer.Controller")
  * @swagger
  * /api/createCostomer:
  *   post:
- *     tags: [Users]
- *     summary: Create a new user
+ *     tags: [Customer]
+ *     summary: Create a new customers
  *     requestBody:
  *       required: true
  *       content:
@@ -30,57 +30,57 @@ const costomerController = require("../Controllers/Customer.Controller")
  *                 type: string
  *     responses:
  *       201:
- *         description: User created
+ *         description: Customer created
  *       400:
  *         description: Invalid input
  *       500:
  *         description: Server error
  */
-costomer.post('/createCostomer', costomerController.createCustomer);
+customerRouts.post('/createCostomer', costomerController.createCustomer);
 
 /**
  * @swagger
  * /api/getCostomer:
  *   get:
- *     tags: [Users]
- *     summary: Get all users
+ *     tags: [Customer]
+ *     summary: Get all Customer
  *     responses:
  *       200:
- *         description: List of users
+ *         description: List of Customers
  *       500:
  *         description: Server error
  */
-costomer.get('/getCostomer', costomerController.getCustomer);
+customerRouts.get('/getCostomer', costomerController.getCustomer);
 
 /**
  * @swagger
  * /api/getCostomerBiId/{id}:
  *   get:
- *     tags: [Users]
- *     summary: Get user by ID
+ *     tags: [Customer]
+ *     summary: Get Customer by ID
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: integer
  *         required: true
- *         description: User ID
+ *         description: Customer ID
  *     responses:
  *       200:
- *         description: User details
+ *         description: Customer details
  *       404:
- *         description: User not found
+ *         description: Customer not found
  *       500:
  *         description: Server error
  */
-costomer.get('/getCostomerBiId/:id', costomerController.getCustomerBiId);
+customerRouts.get('/getCostomerBiId/:id', costomerController.getCustomerBiId);
 
 /**
  * @swagger
  * /updataCustomer/{id}:
  *   put:
- *     tags: [Users]
- *     summary: Update user by ID
+ *     tags: [Customer]
+ *     summary: Update Customer by ID
  *     parameters:
  *       - in: path
  *         name: id
@@ -103,19 +103,19 @@ costomer.get('/getCostomerBiId/:id', costomerController.getCustomerBiId);
  *                 type: string
  *     responses:
  *       200:
- *         description: User updated
+ *         description: Customer updated
  *       404:
- *         description: User not found
+ *         description: Customer not found
  *       500:
  *         description: Server error
  */
-costomer.put('/updataCustomer/:id', costomerController.updataCustomer);
+customerRouts.put('/updataCustomer/:id', costomerController.updataCustomer);
 
 /**
  * @swagger
  * /deletCustomer/{id}:
  *   delete:
- *     tags: [Users]
+ *     tags: [Customer]
  *     summary: Delete user by ID
  *     parameters:
  *       - in: path
@@ -126,12 +126,12 @@ costomer.put('/updataCustomer/:id', costomerController.updataCustomer);
  *         description: User ID
  *     responses:
  *       204:
- *         description: User deleted
+ *         description: Customer deleted
  *       404:
- *         description: User not found
+ *         description: Customer not found
  *       500:
  *         description: Server error
  */
-costomer.delete('/deletCustomer/:id', costomerController.deletCustomer);
+customerRouts.delete('/deletCustomer/:id', costomerController.deletCustomer);
 
-module.exports = costomer;
+module.exports = customerRouts;
