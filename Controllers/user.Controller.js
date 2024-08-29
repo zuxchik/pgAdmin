@@ -6,8 +6,8 @@ exports.createUser = async (req, res) => {
     if (error) return res.status(400).send(error.details[0].message)
 
     try {
-        const users = await User.create(req.body)
-        res.status(201).send(users)
+        const Users = await User.create(req.body)
+        res.status(201).send(Users)
     } catch (err) {
         res.status(500).send(err.message)
     }
@@ -15,8 +15,8 @@ exports.createUser = async (req, res) => {
 
 exports.getUser = async (req, res) => {
     try {
-        const users = await User.findAll()
-        res.status(201).send(users)
+        const Users = await User.findAll()
+        res.status(201).send(Users)
     } catch (err) {
         res.status(500).send(err.message)
     }
@@ -25,7 +25,7 @@ exports.getUser = async (req, res) => {
 exports.getUserBiId = async (req, res) => {
     try {
         const users = await User.findByPk(req.params.id)
-        if (!users) return res.status(404).send("User not faund")
+        if (!users) return res.status(404).send("Users not faund")
         res.status(200).send(users)
     } catch (err) {
         res.status(500).send(err.message)
@@ -33,15 +33,15 @@ exports.getUserBiId = async (req, res) => {
 }
 
 exports.updataUser = async (req, res) => {
-    const { error } = validetionUser(req.body)
+    const { error } = validateUser(req.body)
     if (error) return res.status(400).send(error.details[0].message)
 
     try {
-        const user = await User.findByPk(req.params.id)
-        if (!user) return res.status(404).send("User not fa unt")
+        const Users = await User.findByPk(req.params.id)
+        if (!Users) return res.status(404).send("User not fa unt")
 
 
-        await user.updata(req.body)
+        await Users.updata(req.body)
         res.status(200).send()
     } catch (err) {
         res.status(500).send(err.message)
@@ -50,11 +50,11 @@ exports.updataUser = async (req, res) => {
 
 exports.deletUser = async (req, res) => {
     try {
-        const user = await User.findByPk(req.params.id)
-        if (!user) return res.status(404).send("User not fa unt")
+        const Users = await User.findByPk(req.params.id)
+        if (!Users) return res.status(404).send("User not fa unt")
 
 
-        await user.destroy()
+        await Users.destroy()
         res.status(204).send()
     } catch (err) {
         res.status(500).send(err.message)

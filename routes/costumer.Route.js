@@ -1,6 +1,6 @@
 const express = require('express');
-const customerRouts = express.Router();
-const costomerController = require("../Controllers/Customer.Controller")
+const customer = express.Router();
+const customerController = require("../Controllers/Customer.Controller")
 
 /**
  * @swagger
@@ -26,7 +26,7 @@ const costomerController = require("../Controllers/Customer.Controller")
  *                 type: string
  *               email:
  *                 type: string
- *               password:
+ *               address:
  *                 type: string
  *     responses:
  *       201:
@@ -36,7 +36,7 @@ const costomerController = require("../Controllers/Customer.Controller")
  *       500:
  *         description: Server error
  */
-customerRouts.post('/createCostomer', costomerController.createCustomer);
+customer.post('/createCostomer', customerController.createCustomer);
 
 /**
  * @swagger
@@ -50,7 +50,7 @@ customerRouts.post('/createCostomer', costomerController.createCustomer);
  *       500:
  *         description: Server error
  */
-customerRouts.get('/getCostomer', costomerController.getCustomer);
+customer.get('/getCostomer', customerController.getCustomer);
 
 /**
  * @swagger
@@ -73,11 +73,11 @@ customerRouts.get('/getCostomer', costomerController.getCustomer);
  *       500:
  *         description: Server error
  */
-customerRouts.get('/getCostomerBiId/:id', costomerController.getCustomerBiId);
+customer.get('/getCostomerBiId/:id', customerController.getCustomerBiId);
 
 /**
  * @swagger
- * /updataCustomer/{id}:
+ * api/updataCustomer/{id}:
  *   put:
  *     tags: [Customer]
  *     summary: Update Customer by ID
@@ -99,7 +99,7 @@ customerRouts.get('/getCostomerBiId/:id', costomerController.getCustomerBiId);
  *                 type: string
  *               email:
  *                 type: string
- *               password:
+ *               address:
  *                 type: string
  *     responses:
  *       200:
@@ -109,7 +109,7 @@ customerRouts.get('/getCostomerBiId/:id', costomerController.getCustomerBiId);
  *       500:
  *         description: Server error
  */
-customerRouts.put('/updataCustomer/:id', costomerController.updataCustomer);
+customer.put('/updataCustomer/:id', customerController.updataCustomer);
 
 /**
  * @swagger
@@ -132,6 +132,6 @@ customerRouts.put('/updataCustomer/:id', costomerController.updataCustomer);
  *       500:
  *         description: Server error
  */
-customerRouts.delete('/deletCustomer/:id', costomerController.deletCustomer);
+customer.delete('/deletCustomer/:id', customerController.deletCustomer);
 
-module.exports = customerRouts;
+module.exports = customer;

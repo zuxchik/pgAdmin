@@ -11,7 +11,7 @@ const userController = require('../Controllers/user.Controller');
 
 /**
  * @swagger
- * /api/users:
+ * /api/createUser:
  *   post:
  *     tags: [Users]
  *     summary: Create a new user
@@ -36,11 +36,11 @@ const userController = require('../Controllers/user.Controller');
  *       500:
  *         description: Server error
  */
-router.post('/users', userController.createUser);
+router.post('/createUser', userController.createUser);
 
 /**
  * @swagger
- * /api/users:
+ * /api/getUser:
  *   get:
  *     tags: [Users]
  *     summary: Get all users
@@ -50,11 +50,11 @@ router.post('/users', userController.createUser);
  *       500:
  *         description: Server error
  */
-router.get('/users', userController.getUser);
+router.get('/getUser', userController.getUser);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/getUserBiId/{id}:
  *   get:
  *     tags: [Users]
  *     summary: Get user by ID
@@ -73,11 +73,11 @@ router.get('/users', userController.getUser);
  *       500:
  *         description: Server error
  */
-router.get('/users/:id', userController.getUserBiId);
+router.get('/getUserBiId/:id', userController.getUserBiId);
 
 /**
  * @swagger
- * /users/{id}:
+ * /api/updataUser/{id}:
  *   put:
  *     tags: [Users]
  *     summary: Update user by ID
@@ -109,11 +109,11 @@ router.get('/users/:id', userController.getUserBiId);
  *       500:
  *         description: Server error
  */
-router.put('/users/:id', userController.updataUser);
+router.put('/updataUser/:id', userController.updataUser);
 
 /**
  * @swagger
- * /users/{id}:
+ * /api/deletUser/{id}:
  *   delete:
  *     tags: [Users]
  *     summary: Delete user by ID
@@ -132,6 +132,6 @@ router.put('/users/:id', userController.updataUser);
  *       500:
  *         description: Server error
  */
-router.delete('/users/:id', userController.deletUser);
+router.delete('/deletUser/:id', userController.deletUser);
 
-module.exports = router;
+module.exports = router

@@ -1,16 +1,16 @@
 const express = require("express")
 const dotenv = require("dotenv")
 const { sequelize } = require("./models")
-const userRoutes = require("./routes/user.route")
-const customerRouts = require("./routes/costumer.Route")
 const SetupSwagger = require("./swagger/swagger")
 
 dotenv.config()
 
 const app = express()
 app.use(express.json())
-    
-app.use("/api", userRoutes)
+
+const userRouts = require("./routes/user.route")
+app.use("/api", userRouts)
+const customerRouts = require("./routes/costumer.Route")
 app.use("/api", customerRouts)
 
 SetupSwagger(app)

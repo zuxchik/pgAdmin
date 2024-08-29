@@ -1,4 +1,4 @@
-const { Customer } = require("../models/customer.model")
+const {Customer} = require("../models")
 const { validetionCustomer } = require("../validations/costumer.validetion")
 
 exports.createCustomer = async (req, res) => {
@@ -6,8 +6,8 @@ exports.createCustomer = async (req, res) => {
     if (error) return res.status(400).send(error.details[0].message)
 
     try {
-        const Customers = await Customer.create(rea.body)
-        res.status(201).send(Customers)
+        const customers = await Customer.create(req.body)
+        res.status(201).send(customers)
     } catch (err) {
         res.status(500).send(err.message)
     }
