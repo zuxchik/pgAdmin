@@ -1,5 +1,9 @@
-const { User } = require("../models")
+const { User, Customer } = require("../models")
 const { validateUser } = require("../validations/user.validetion")
+
+const sequelize = require("../config/database")
+User.associate(sequelize.models)
+Customer.associate(sequelize.models)
 
 exports.createUser = async (req, res) => {
     const { error } = validateUser(req.body)
@@ -24,7 +28,12 @@ exports.getUser = async (req, res) => {
 
 exports.getUserBiId = async (req, res) => {
     try {
-        const users = await User.findByPk(req.params.id)
+        const users = await User.findByPk(req.params.id, {
+            include: {
+                model: Customer,
+                as: "customer"
+            },
+        })
         if (!users) return res.status(404).send("Users not faund")
         res.status(200).send(users)
     } catch (err) {

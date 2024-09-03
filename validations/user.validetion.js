@@ -4,7 +4,8 @@ const validateUser = (user) => {
     const schema = Joi.object({
         name: Joi.string().min(3).max(20).required(),
         email: Joi.string().email().required(),
-        password: Joi.string().min(5).max(20).required()
+        password: Joi.string().min(5).max(20).required(),
+        customer_id: Joi.number().required()
     })
     return schema.validate(user)
 }

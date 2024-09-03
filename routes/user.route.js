@@ -28,6 +28,8 @@ const userController = require('../Controllers/user.Controller');
  *                 type: string
  *               password:
  *                 type: string
+ *               customer_id:
+ *                 type: number
  *     responses:
  *       201:
  *         description: User created

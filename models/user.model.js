@@ -21,14 +21,28 @@ module.exports = (sequelize, DataTypes) => {
         password: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+        customer_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: "Customer",
+                key: "id"
+            },
+        },
     });
+``
+    User.associate = (models) => {
+        User.belongsTo(models.Customer, { 
+            foreignKey: "customer_id",
+            as: "customer"
+        });
+    };
 
     User.beforeSave(async (user, options) => {
         if (user.changed("password")) {
-            user.password = await bcrypt.hash(user, password = 10)
+            user.password = await bcrypt.hash(user.password, 10)
         }
-    })
+    });
 
     return User
 }
